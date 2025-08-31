@@ -3,6 +3,7 @@
 import { challengeOptions, challenges } from "@/db/schema";
 import { useState } from "react";
 import { Header } from "./header";
+import { QuestionBubble } from "./question-bubble";
 
 type Props = {
     initialPercentage: number;
@@ -47,10 +48,13 @@ export const Quiz = ({
                 <div className="h-full flex items-center justify-center">
                     <div className="lg:min-h-[350px] lg:w-[600px] w-full px-6 lg:px-0 flex flex-col gap-y-12">
                         <h1 className="text-lg lg:text-3xl text-center lg:text-start font-bold text-neutral-700">
-                            Qual desses diz sobre a "Primeira lei de Newton"?
+                            {title}
                         </h1>
                         <div>
-                            {/*TODO: Challenge component*/}
+                            {/* TODO: CHange back to type ASSIST */}
+                            {challenge.type === "SELECT" && (
+                                <QuestionBubble question={challenge.question} />
+                            )}
                         </div>
                     </div>
                 </div>
