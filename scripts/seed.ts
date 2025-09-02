@@ -77,30 +77,81 @@ const main = async() => {
                 lessonId: 1,
                 type: "SELECT",
                 order: 1,
-                question: 'Qual desses é a "Segunda lei de Newton"',
+                question: 'Qual dessas fórmulas representa a "Segunda lei de Newton"',
+            },
+            {
+                id: 2,
+                lessonId: 1,
+                type: "SELECT",
+                order: 2,
+                question: 'Qual dessas fórmulas representa a "Lei da gravitação universal"',
+            },
+            {
+                id: 3,
+                lessonId: 1,
+                type: "SELECT",
+                order: 3,
+                question: 'Qual dessas fórmulas representa a "Primeira lei de Ohm"',
             },
         ]);
 
         await db.insert(schema.challengeOptions).values([
             {
-                id: 1,
                 challengeId: 1,
                 imageSrc: "/segunda_lei.svg",
                 correct: true,
                 text: "F = MA",
             },
             {
-                id: 2,
                 challengeId: 1,
                 imageSrc: "/lei_da_gravitacao.svg",
                 correct: false,
                 text: "F = GMM/r²",
             },
             {
-                id: 3,
                 challengeId: 1,
                 imageSrc: "/primeira_lei_de_ohm.svg",
                 correct: false,
+                text: "V = RI",
+            },
+        ]);
+        await db.insert(schema.challengeOptions).values([
+            {
+                challengeId: 2,
+                imageSrc: "/segunda_lei.svg",
+                correct: false,
+                text: "F = MA",
+            },
+            {
+                challengeId: 2,
+                imageSrc: "/lei_da_gravitacao.svg",
+                correct: true,
+                text: "F = GMM/r²",
+            },
+            {
+                challengeId: 2,
+                imageSrc: "/primeira_lei_de_ohm.svg",
+                correct: false,
+                text: "V = RI",
+            },
+        ]);
+        await db.insert(schema.challengeOptions).values([
+            {
+                challengeId: 3,
+                imageSrc: "/segunda_lei.svg",
+                correct: false,
+                text: "F = MA",
+            },
+            {
+                challengeId: 3,
+                imageSrc: "/lei_da_gravitacao.svg",
+                correct: false,
+                text: "F = GMM/r²",
+            },
+            {
+                challengeId: 3,
+                imageSrc: "/primeira_lei_de_ohm.svg",
+                correct: true,
                 text: "V = RI",
             },
         ]);
