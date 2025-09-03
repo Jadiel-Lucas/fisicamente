@@ -156,6 +156,30 @@ const main = async() => {
             },
         ]);
 
+        await db.insert(schema.challenges).values([
+            {
+                id: 4,
+                lessonId: 2, // algumas coisa aí, e pros outros 2 tbm 
+                type: "SELECT",
+                order: 1,
+                question: 'Qual dessas fórmulas representa a "Segunda lei de Newton"',
+            },
+            {
+                id: 5,
+                lessonId: 2,
+                type: "SELECT",
+                order: 2,
+                question: 'Qual dessas fórmulas representa a "Lei da gravitação universal"',
+            },
+            {
+                id: 6,
+                lessonId: 2,
+                type: "SELECT",
+                order: 3,
+                question: 'Qual dessas fórmulas representa a "Primeira lei de Ohm"',
+            },
+        ]);
+
         console.log("Seeding finished");
     } catch (error) {
         console.error(error);
