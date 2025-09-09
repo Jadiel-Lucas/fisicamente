@@ -1,9 +1,21 @@
-import dynamic from "next/dynamic";
+//"use client" //estrnho, coloocar user client e tirar o comentario do const app o site volta a funcionar, se deixar apenas a importação e tirar o const aí dá errado
+
+import { redirect } from "next/navigation";
+//import dynamic from "next/dynamic";
+
+import { getIsAdmin } from "@/lib/admin";
 
 import App from "./app";
 
 //const App = dynamic(() => import("./app"), { ssr: false });
-const AdminPage = () => {
+
+const AdminPage = async () => {
+    const isAdmin = await getIsAdmin();
+
+    if (!isAdmin) {
+        redirect("/");
+    }
+
     return (
         <App />
     );
