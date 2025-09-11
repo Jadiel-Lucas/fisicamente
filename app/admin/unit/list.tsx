@@ -7,7 +7,7 @@ export const UnitList = () => {
                 <TextField source="id"/>
                 <TextField source="title"/>
                 <TextField source="description"/>
-                <ReferenceField source="courseId" reference="course" />
+                <ReferenceField source="courseId" reference="courses" />
                 <TextField source="order"/>
             </Datagrid>
         </List>
