@@ -5,7 +5,7 @@ import { getIsAdmin } from "@/lib/admin";
 import { units } from "@/db/schema";
 
 export const GET = async () => {
-    const isAdmin = getIsAdmin(); // diz que precisa de await
+    const isAdmin = await getIsAdmin(); // diz que precisa de await
     
     if (!isAdmin) {
         return new NextResponse("Unauth", { status: 401 });
@@ -17,7 +17,7 @@ export const GET = async () => {
 };
 
 export const POST = async (req: Request) => {
-    const isAdmin = getIsAdmin(); // diz que precisa de await
+    const isAdmin = await getIsAdmin(); // diz que precisa de await
     
     if (!isAdmin) {
         return new NextResponse("Unauth", { status: 401 });

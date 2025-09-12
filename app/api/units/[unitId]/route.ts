@@ -11,14 +11,16 @@ export const GET = async (
 ) => {
 
     //diz que precisa disso: const isAdmin = await getIsAdmin();
+    const isAdmin = await getIsAdmin();
 
     if (!getIsAdmin()) {
         return new NextResponse("Unauthorized", { status: 403 });
     }
 
     //diz que precisa disso: const id = Number(params.unitId);
+    //const id = Number(params.unitId);
 
-    const data = await db.query.courses.findFirst({
+    const data = await db.query.units.findFirst({
         where: eq(units.id, params.unitId),
     });
 
@@ -39,7 +41,7 @@ export const PUT = async (
         ...body,
     }).where(eq(units.id, params.unitId)).returning();
 
-    return NextResponse.json(data); //diz que precisa de data[0]
+    return NextResponse.json(data[0]); //diz que precisa de data[0]
 };
 
 
@@ -54,5 +56,5 @@ export const DELETE = async (
     const data = await db.delete(units)
         .where(eq(units.id, params.unitId)).returning();
 
-    return NextResponse.json(data); //diz que precisa de data[0]
+    return NextResponse.json(data[0]); //diz que precisa de data[0]
 };

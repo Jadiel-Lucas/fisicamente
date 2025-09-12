@@ -11,6 +11,7 @@ export const GET = async (
 ) => {
 
     //diz que precisa disso: const isAdmin = await getIsAdmin();
+    const isAdmin = await getIsAdmin();
 
     if (!getIsAdmin()) {
         return new NextResponse("Unauthorized", { status: 403 });
@@ -37,7 +38,7 @@ export const PUT = async (
         ...body,
     }).where(eq(courses.id, params.courseId)).returning();
 
-    return NextResponse.json(data); // diz que precisa de data[0]
+    return NextResponse.json(data[0]); // diz que precisa de data[0]
 };
 
 
@@ -52,5 +53,5 @@ export const DELETE = async (
     const data = await db.delete(courses)
         .where(eq(courses.id, params.courseId)).returning();
 
-    return NextResponse.json(data); // diz que precisa de data[0]
+    return NextResponse.json(data[0]); // diz que precisa de data[0]
 };
