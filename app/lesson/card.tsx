@@ -18,7 +18,7 @@ type Props = {
 };
 
 export const Card = ({
-    id,
+    //id,
     imageSrc,
     //audioSrc,
     text,

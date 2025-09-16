@@ -6,52 +6,73 @@ import { courses } from "@/db/schema";
 import { getIsAdmin } from "@/lib/admin";
 
 export const GET = async (
-    req: Request,
-        { params }: { params: { courseId: number } },
+  req: Request,
+  { params }: { params: Promise<{ courseId: string }> },
 ) => {
+  const isAdmin = await getIsAdmin();
+  if (!isAdmin) {
+    return new NextResponse("Unauthorized", { status: 403 });
+  }
 
-    //diz que precisa disso: const isAdmin = await getIsAdmin();
-    const isAdmin = await getIsAdmin();
+  const { courseId } = await params;
+  const id = Number(courseId);
+  const data = await db.query.courses.findFirst({
+    where: eq(courses.id, id),
+  });
 
-    if (!getIsAdmin()) {
-        return new NextResponse("Unauthorized", { status: 403 });
-    }
+  if (!data) {
+    return new NextResponse("Not found", { status: 404 });
+  }
 
-    const data = await db.query.courses.findFirst({
-        where: eq(courses.id, params.courseId),
-    });
-
-    return NextResponse.json(data);
+  return NextResponse.json(data);
 };
-
 
 export const PUT = async (
-    req: Request,
-        { params }: { params: { courseId: number } },
+  req: Request,
+  { params }: { params: Promise<{ courseId: string }> },
 ) => {
-    if (!getIsAdmin()) {
-        return new NextResponse("Unauthorized", { status: 403 });
-    }
+  const isAdmin = await getIsAdmin();
+  if (!isAdmin) {
+    return new NextResponse("Unauthorized", { status: 403 });
+  }
 
-    const body = await req.json();
-    const data = await db.update(courses).set({
-        ...body,
-    }).where(eq(courses.id, params.courseId)).returning();
+  const { courseId } = await params;
+  const id = Number(courseId);
+  const body = await req.json();
 
-    return NextResponse.json(data[0]); // diz que precisa de data[0]
+  const data = await db
+    .update(courses)
+    .set({ ...body })
+    .where(eq(courses.id, id))
+    .returning();
+
+  if (!data.length) {
+    return new NextResponse("Not found", { status: 404 });
+  }
+
+  return NextResponse.json(data[0]);
 };
 
-
 export const DELETE = async (
-    req: Request,
-        { params }: { params: { courseId: number } },
+  req: Request,
+  { params }: { params: Promise<{ courseId: string }> },
 ) => {
-    if (!getIsAdmin()) {
-        return new NextResponse("Unauthorized", { status: 403 });
-    }
+  const isAdmin = await getIsAdmin();
+  if (!isAdmin) {
+    return new NextResponse("Unauthorized", { status: 403 });
+  }
 
-    const data = await db.delete(courses)
-        .where(eq(courses.id, params.courseId)).returning();
+  const { courseId } = await params;
+  const id = Number(courseId);
 
-    return NextResponse.json(data[0]); // diz que precisa de data[0]
+  const data = await db
+    .delete(courses)
+    .where(eq(courses.id, id))
+    .returning();
+
+  if (!data.length) {
+    return new NextResponse("Not found", { status: 404 });
+  }
+
+  return NextResponse.json(data[0]);
 };

@@ -43,7 +43,7 @@ export const Items = ({
                 />
                 <div className="flex-1">
                     <p className="text-neutral-700 text-base lg:text-xl font-bold">
-                        Refill hearts
+                        Recarregar corações
                     </p>
                 </div>
                 <Button 

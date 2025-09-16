@@ -38,7 +38,7 @@ const LessonIdPage = async ({
             initialLessonChallenges={lesson.challenges}
             initialHearts={userProgress.hearts}
             initialPercentage={initialPercentage}
-            userSubscription={null} //add user subscription
+            //userSubscription={null} //add user subscription
         />
     );
 };

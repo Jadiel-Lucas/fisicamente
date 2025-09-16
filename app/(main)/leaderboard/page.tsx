@@ -44,10 +44,10 @@ const LeaderboardPage = async () => {
                         width={90}
                     />
                     <h1 className="text-center font-bold text-neutral-800 text-2xl my-6">
-                        Leaderboard
+                        Liderança
                     </h1>
                     <p className="text-muted-foreground text-center text-lg mb-6">
-                        See where you stand amoung other learners in the community.
+                        Veja a sua colocação em relação aos outros alunos da comunidade.
                     </p>
                     <Separator className="mb-4 h-0.5 rounded-full" />
                     {leaderboard.map((userProgress, index) => (

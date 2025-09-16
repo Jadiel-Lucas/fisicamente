@@ -6,67 +6,78 @@ import { challenges } from "@/db/schema";
 import { getIsAdmin } from "@/lib/admin";
 
 export const GET = async (
-    req: Request,
-    { params }: { params: { challengeId: number } },
+  req: Request,
+  { params }: { params: Promise<{ challengeId: string }> },
 ) => {
-    const isAdmin = await getIsAdmin();
+  const isAdmin = await getIsAdmin();
+  if (!isAdmin) {
+    return new NextResponse("Unauthorized", { status: 403 });
+  }
 
-    if (!isAdmin) {
-        return new NextResponse("Unauthorized", { status: 403 });
-    }
+  const { challengeId } = await params;
+  const id = Number(challengeId);
 
-    const data = await db.query.challenges.findFirst({
-        where: eq(challenges.id, params.challengeId),
-    });
+  const data = await db.query.challenges.findFirst({
+    where: eq(challenges.id, id),
+  });
 
-    if (!data) {
-        return new NextResponse("Not found", { status: 404 });
-    }
+  if (!data) {
+    return new NextResponse("Not found", { status: 404 });
+  }
 
-    return NextResponse.json(data);
+  return NextResponse.json(data);
 };
 
 export const PUT = async (
-    req: Request,
-    { params }: { params: { challengeId: number } },
+  req: Request,
+  { params }: { params: Promise<{ challengeId: string }> },
 ) => {
-    const isAdmin = await getIsAdmin();
+  const isAdmin = await getIsAdmin();
+  if (!isAdmin) {
+    return new NextResponse("Unauthorized", { status: 403 });
+  }
 
-    if (!isAdmin) {
-        return new NextResponse("Unauthorized", { status: 403 });
-    }
+  const { challengeId } = await params;
+  const id = Number(challengeId);
+  const body = await req.json();
 
-    const body = await req.json();
-    const data = await db.update(challenges).set({
-        ...body,
-    }).where(eq(challenges.id, params.challengeId)).returning();
+  const data = await db
+    .update(challenges)
+    .set({ ...body })
+    .where(eq(challenges.id, id))
+    .returning();
 
-    if (!data.length) {
-        return new NextResponse("Not found", { status: 404 });
-    }
+  if (!data.length) {
+    return new NextResponse("Not found", { status: 404 });
+  }
 
-    return NextResponse.json(data[0]);
+  return NextResponse.json(data[0]);
 };
 
 export const DELETE = async (
-    req: Request,
-    { params }: { params: { challengeId: number } },
+  req: Request,
+  { params }: { params: Promise<{ challengeId: string }> },
 ) => {
-    const isAdmin = await getIsAdmin();
+  const isAdmin = await getIsAdmin();
+  if (!isAdmin) {
+    return new NextResponse("Unauthorized", { status: 403 });
+  }
 
-    if (!isAdmin) {
-        return new NextResponse("Unauthorized", { status: 403 });
-    }
+  const { challengeId } = await params;
+  const id = Number(challengeId);
 
-    const data = await db.delete(challenges)
-        .where(eq(challenges.id, params.challengeId)).returning();
+  const data = await db
+    .delete(challenges)
+    .where(eq(challenges.id, id))
+    .returning();
 
-    if (!data.length) {
-        return new NextResponse("Not found", { status: 404 });
-    }
+  if (!data.length) {
+    return new NextResponse("Not found", { status: 404 });
+  }
 
-    return NextResponse.json(data[0]);
+  return NextResponse.json(data[0]);
 };
+
 
 
 

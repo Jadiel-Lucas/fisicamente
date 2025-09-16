@@ -6,13 +6,13 @@ import Image from "next/image";
 type Props = {
     hearts: number;
     percentage: number;
-    hasActiveSubscription: boolean;
+    //hasActiveSubscription: boolean;
 };
 
 export const Header = ({
     hearts,
     percentage,
-    hasActiveSubscription,
+    //hasActiveSubscription,
 }: Props) => {
     const { open } = useExitModal();
 
@@ -31,10 +31,10 @@ export const Header = ({
                     alt="Heart"
                     className="mr-2"
                 />
-                {hasActiveSubscription
+                {/*{hasActiveSubscription
                     ? <InfinityIcon className="h-6 w-6 stroke-[3]" />
                     : hearts
-                }
+                }*/}
             </div>
         </header>
     );

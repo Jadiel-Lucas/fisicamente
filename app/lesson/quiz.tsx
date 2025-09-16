@@ -27,7 +27,7 @@ type Props = {
         completed: boolean;
         challengeOptions: typeof challengeOptions.$inferSelect[];
     })[];
-    userSubscription: any; //TODO: replace with subscription DB type
+    //userSubscription: any; //TODO: replace with subscription DB type
 };
 
 export const Quiz = ({ 
@@ -35,7 +35,7 @@ export const Quiz = ({
     initialHearts,
     initialLessonId,
     initialLessonChallenges,
-    userSubscription,
+    //userSubscription,
 }: Props) => {
     const { open: openHeartsModal } = useHeartsModal();
     const { open: openPracticeModal } = usePracticeModal();
@@ -180,7 +180,7 @@ export const Quiz = ({
                         width={50}
                     />
                     <h1 className="text-xl lg:text-3xl font-bold text-neutral-700">
-                        Great job! <br /> You've completed the lesson.
+                        Bom trabalho! <br /> Você completou a lição.
                     </h1>
                     <div className="flex items-center gap-x-4 w-full">
                         <ResultCard 
@@ -213,7 +213,7 @@ export const Quiz = ({
             <Header 
                 hearts={hearts}
                 percentage={percentage}
-                hasActiveSubscription={!!userSubscription?.isActive}
+                //hasActiveSubscription={!!userSubscription?.isActive}
             />
             <div className="flex-1">
                 <div className="h-full flex items-center justify-center">

@@ -14,7 +14,7 @@ export const Quests = ({ points }: Props) => {
         <div className="border-2 rounded-xl p-4 space-y-4">
             <div className="flex items-center justify-between w-full space-y-2">
                 <h3 className="font-bold text-lg">
-                    Quests
+                    Questões
                 </h3>
                 <Link href="/quests">
                     <Button

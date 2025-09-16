@@ -44,10 +44,10 @@ export const HeartsModal = () => {
                         />
                     </div>
                     <DialogTitle className="text-center font-bold text-2xl">
-                        You ran out of hearts!
+                        Seus corações acabaram! 
                     </DialogTitle>
                     <DialogDescription className="text-center text-base">
-                        Purhcase hearts in the store.
+                        Compre corações na loja. 
                     </DialogDescription>
                 </DialogHeader>
                 <DialogFooter className="mb-4">
@@ -58,7 +58,7 @@ export const HeartsModal = () => {
                             size="lg" 
                             onClick={onClick}
                             >
-                                Go to shoop
+                                Vá para a loja
                         </Button>
                         <Button 
                             variant="primaryOutline" 
@@ -66,7 +66,7 @@ export const HeartsModal = () => {
                             size="lg" 
                             onClick={close}
                             >
-                                No thanks
+                                Não, obrigado
                         </Button>
                     </div>
                 </DialogFooter>
