@@ -11,6 +11,7 @@ import {
     UserButton,
 } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 export const Header = () => {
     return (
@@ -40,7 +41,9 @@ export const Header = () => {
                             fallbackRedirectUrl="/learn"
                         >
                             <Button size="lg" variant="ghost">
-                                Login
+                                <Link href="/courses">
+                                    Login
+                                </Link>
                             </Button>
                         </SignInButton>
                     </SignedOut>
