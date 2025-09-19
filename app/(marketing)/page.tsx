@@ -35,9 +35,7 @@ export default function Home() {
                   fallbackRedirectUrl="/learn"
                 >
                   <Button size="lg" variant="secondary" className="w-full">
-                    <Link href="/courses">
-                      Get Started
-                    </Link>
+                    Get Started
                   </Button>
                 </SignUpButton>
                 <SignInButton
@@ -45,9 +43,7 @@ export default function Home() {
                   fallbackRedirectUrl="/learn"
                 >
                   <Button size="lg" variant="primaryOutline" className="w-full">
-                    <Link href="/courses">
-                      I already have an account
-                    </Link>
+                    I already have an account
                   </Button>
                 </SignInButton>
               </div>

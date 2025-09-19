@@ -41,9 +41,7 @@ export const Header = () => {
                             fallbackRedirectUrl="/learn"
                         >
                             <Button size="lg" variant="ghost">
-                                <Link href="/courses">
-                                    Login
-                                </Link>
+                                Login
                             </Button>
                         </SignInButton>
                     </SignedOut>
