@@ -31,6 +31,7 @@ export const Header = ({
                     alt="Heart"
                     className="mr-2"
                 />
+                {hearts}
                 {/*{hasActiveSubscription
                     ? <InfinityIcon className="h-6 w-6 stroke-[3]" />
                     : hearts
