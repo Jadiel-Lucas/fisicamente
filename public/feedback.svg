@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1200" height="600" viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Happy and sad faces">
+  <!-- Transparent background -->
+  <defs>
+    <style type="text/css"><![CDATA[
+      .face { stroke:#213547; stroke-width:18; }
+      .happy-fill { fill:#FFD23F; }
+      .sad-fill { fill:#FF6159; }
+      .feature { fill:#213547; }
+    ]]></style>
+  </defs>
+
+  <!-- Happy face (left) -->
+  <g id="happy" transform="translate(300,300)">
+    <circle class="face happy-fill" r="200" />
+    <!-- Eyes -->
+    <path class="feature" d="M -85 -40 q 25 -30 60 0" stroke="none"/>
+    <path class="feature" d="M 85 -40 q -25 -30 -60 0" stroke="none"/>
+    <!-- Smile -->
+    <path class="feature" d="M -120 40 q 120 120 240 0" fill="none" stroke="#213547" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+
+  <!-- Sad face (right) -->
+  <g id="sad" transform="translate(900,300)">
+    <circle class="face sad-fill" r="200" />
+    <!-- Eyes (tilted) -->
+    <path class="feature" d="M -85 -20 q 25 30 60 0" stroke="none"/>
+    <path class="feature" d="M 85 -20 q -25 30 -60 0" stroke="none"/>
+    <!-- Frown -->
+    <path class="feature" d="M -120 80 q 120 -120 240 0" fill="none" stroke="#213547" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

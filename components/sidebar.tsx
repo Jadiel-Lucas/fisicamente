@@ -48,6 +48,11 @@ export const Sidebar = ({ className }: Props) => {
                     href="/shop"
                     iconSrc="/shop.svg"
                 />
+                <SidebarItem 
+                    label="feedback" 
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSeBIas8och1jHPmHQl-jzXmvJ15PBYrRT6HJOxlGeul-fMgBg/viewform?usp=dialog"
+                    iconSrc="/feedback.svg"
+                />
             </div>
             <div className="p-4">
                 <ClerkLoading>
